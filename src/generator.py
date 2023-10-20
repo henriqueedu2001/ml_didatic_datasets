@@ -19,3 +19,17 @@ class Generator:
         dataset = min_value + (max_value - min_value)*dataset
         
         return dataset
+    
+    
+    def generate_normal_dist(dataset_size: int, mean: float, std_dev: float) -> np.array:
+        """Gera uma distribuição normal N(mu, sigma)
+
+        Args:
+            dataset_size (int): quantidade de pontos do dataset
+            mean (float): média
+            std_dev (float): desvio padrão da distribuição normal (sigma)
+
+        Returns:
+            np.array: dataset com valores distribuídos normalmente
+        """
+        return np.random.normal(mean, std_dev, dataset_size)
