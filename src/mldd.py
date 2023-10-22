@@ -1,3 +1,4 @@
+from generator import DatasetGenerator
 import argparse
 import sys
 
@@ -56,21 +57,21 @@ def generate_dataset(args: argparse.Namespace):
         args (argparse.Namespace): arguments for the dataset creation
     """
     
-    ml_task = args.ml_task
-    directory = args.directory
-    name = args.name
-    size = args.size
-    dimensions = args.dimensions
-    noise = args.noise
-    lineary_separable = args.lineary_separable
+    params = {
+        'ml_task': args.ml_task,
+        'directory': args.directory,
+        'name': args.name,
+        'size': args.size,
+        'dimensions': args.dimensions,
+        'noise': args.noise,
+        'lineary_separable': args.lineary_separable        
+    }
     
-    print(f'''Generating the dataset "{name}" with the given configs:
-    -> ml_task: {ml_task}
-    -> directory: {directory}
-    -> size: {size}
-    -> dimensions: {dimensions}
-    -> noise: {noise}
-    -> lineary_separable: {lineary_separable}''')
+    print('Generating the dataset with the given configs:')    
+    # print(params)
+        
+    dataset = DatasetGenerator.generate(params)
+    print(dataset)
     
     return
 
